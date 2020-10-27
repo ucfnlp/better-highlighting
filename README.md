@@ -23,24 +23,24 @@ The code is written in Python (v3.6) and Pytorch (v1.4). We suggest the followin
 * [spaCy](https://spacy.io/usage)
 * [Huggingface Transformer](https://github.com/huggingface/transformers)
 
-## Sub-sentence generation
+## Sub-sentence segment generation
 
 * `seg_gen.py`: generate all segments from sentences with XLNet
- ` $ python seg_gen.py --dataset 0 --split train --data_start 0 --data_end 1` 
+   ` $ python seg_gen.py --dataset 0 --split train --data_start 0 --data_end 1` 
 
 * `seg_filter_subsent.py`: filter out segments (generate candidate segments for a summary)
-` $ python seg_filter_subsent.py --dataset 0`
+   ` $ python seg_filter_subsent.py --dataset 0`
 
 * `draw_fullsent_pos.py`: draw positions of original sentences in percent
-` $ python draw_fullsent_pos.py`
+   ` $ python draw_fullsent_pos.py`
 
 ## BERT-sim, BERT-imp fine-tuning on CNN/DM
 ### Data generation
 
 * We use the CNN/DM summary dataset, downloaded from [HERE](https://github.com/ucfnlp/summarization-dpp-capsnet) (pre-processed CNN/DM summary data file [direct link]((https://drive.google.com/file/d/1_c4AqnEct0HMg0VOWqupcO0_ijn-fJb0/view?usp=sharing))).
-* This data contains a list of candidate summary sentences (the most similiar sentences to the summary) in each article.
-
+  * The data contains a list of candidate summary sentences (the most similiar sentences to the summary) in each article.
 * `gen_cnndm_pairs.py`: generate train/test data for BERT-sim (pair), BERT-imp (pair_leadn)
+  * The generated data is balanced.
 
 ### BERT-sim, BERT-imp train / test
 
@@ -53,26 +53,26 @@ The code is written in Python (v3.6) and Pytorch (v1.4). We suggest the followin
 
 ## BERT-sim, BERT-imp prediction on target dataset
 
-  * `run_bert_scores.py`: BERT similarity and importance score prediction (DUC, TAC)
+  * `run_bert_scores.py`: BERT similarity and importance score prediction (DUC, TAC)\
     ` $ python run_bert_scores.py --dataset 0 --data_type xlnet --split train --data_start 0 --data_end 1 --gpu_id 0 --batch_size_imp 5 --batch_size_sim 25`
-  * `merge_bert_ext.py`: merge predicted files into one file and convert *.pkl to *.mat (BERT feature file on CNN is *.h5 and no conversion to *.mat)
+  * `merge_bert_ext.py`: merge predicted files into one file and convert *.pkl to *.mat (BERT feature file on CNN is *.h5 and no conversion to *.mat)\
     ` $ python merge_bert_ext.py --dataset 0 --data_type xlnet --split train`
 
 
 ## Text generation for DPP training
 
-  * `gen_text_DPP.py`: generate texts (.txt, .words, .pos, .Y, .YY, .seg, idf, dict) for DPP training/testing from candidate segments or sentences on DUC, TAC
+  * `gen_text_DPP.py`: generate texts (.txt, .words, .pos, .Y, .YY, .seg, idf, dict) for DPP training/testing from candidate segments or sentences
     ` $ python gen_text_DPP.py --dataset 0 --data_type xlnet`
 
 ## Utility files
 
-  * `read_text_from_data.py`: text loader from DUC, TAC
+  * `read_text_from_data.py`: text loader for DUC, TAC
   * `utils.py`: utility functions
 
 
 ## DPP training, testing
 
-  * under `DPP` directory
+  * under `src/DPP` directory
   * `$ bash run.bash run_DPP.m`
   * `run_DPP.m`: main file to set parameters and run DPP training/testing 
   * `main_DPP.m`: read train/test text and call `DPP.m`  
