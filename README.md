@@ -3,7 +3,7 @@
 We provide the source code for the paper **"[Better Highlighting: Creating Sub-Sentence Summary Highlights](https://arxiv.org/pdf/2010.10566.pdf)"**, accepted at EMNLP'20. If you find the code useful, please cite the following paper. 
 
     @inproceedings{cho-song-li-yu-foroosh-liu:2020,
-     Author = {Sangwoo Cho and Kaiqiang Song and Chen Li and Dong Yu and  Hassan Foroosh and Fei Liu},
+     Author = {Sangwoo Cho and Kaiqiang Song and Chen Li and Dong Yu and Hassan Foroosh and Fei Liu},
      Title = {Better Highlighting: Creating Sub-Sentence Summary Highlights},
      Booktitle = {Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
      Year = {2020}}
@@ -25,13 +25,13 @@ The code is written in Python (v3.6) and Pytorch (v1.4). We suggest the followin
 
 ## Sub-sentence segment generation
 
-* `seg_gen.py`: generate all segments from sentences with XLNet
+* `seg_gen.py`: generate all segments from sentences with XLNet\
    ` $ python seg_gen.py --dataset 0 --split train --data_start 0 --data_end 1` 
 
-* `seg_filter_subsent.py`: filter out segments (generate candidate segments for a summary)
+* `seg_filter_subsent.py`: filter out segments (generate candidate segments for a summary)\
    ` $ python seg_filter_subsent.py --dataset 0`
 
-* `draw_fullsent_pos.py`: draw positions of original sentences in percent
+* `draw_fullsent_pos.py`: draw positions of original sentences in percent\
    ` $ python draw_fullsent_pos.py`
 
 ## BERT-sim, BERT-imp fine-tuning on CNN/DM
@@ -61,7 +61,7 @@ The code is written in Python (v3.6) and Pytorch (v1.4). We suggest the followin
 
 ## Text generation for DPP training
 
-  * `gen_text_DPP.py`: generate texts (.txt, .words, .pos, .Y, .YY, .seg, idf, dict) for DPP training/testing from candidate segments or sentences
+  * `gen_text_DPP.py`: generate texts (.txt, .words, .pos, .Y, .YY, .seg, idf, dict) for DPP training/testing from candidate segments or sentences\
     ` $ python gen_text_DPP.py --dataset 0 --data_type xlnet`
 
 ## Utility files
